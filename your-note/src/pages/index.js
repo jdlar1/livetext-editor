@@ -38,6 +38,7 @@ const MaxWidthContainer = styled.div`
   width: 100%;
   max-width: 900px;
   height: 100%;
+  padding: 0 15px;
 `
 
 export default IndexPage

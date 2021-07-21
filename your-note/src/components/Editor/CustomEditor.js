@@ -12,17 +12,19 @@ const CustomEditor = () => {
   const handleWriting = value => {
     let currentContent = value.getCurrentContent()
     let contentString = JSON.stringify(convertToRaw(currentContent))
-
     socket.emit("submit-changes", contentString)
+    console.log('cambios enviados')
 
     setEditorState(value)
   }
 
   socket.on("broadcast-changes", data => {
+    console.log('cambios recibidos')
     let newContent = convertFromRaw(JSON.parse(data))
     let newEditor = EditorState.createWithContent(newContent)
 
     setEditorState(newEditor)
+    console.log('cambios aplicados')
   })
 
   return (
